@@ -377,6 +377,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO"
+                                id="CameraStatusContainer">
+                                <rect key="frame" x="20" y="20" width="350" height="20"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO"
+                                        id="CameraConnectedStatus">
+                                        <rect key="frame" x="43" y="0.0" width="15" height="15"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="CameraStatusHeight"/>
+                                            <constraint firstAttribute="width" constant="15" id="CameraStatusWidth"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left"
+                                        horizontalHuggingPriority="251" verticalHuggingPriority="251"
+                                        text="Connected Successfully and Sending Poses" textAlignment="natural"
+                                        lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines"
+                                        adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO"
+                                        id="CameraStatusLabel">
+                                        <rect key="frame" x="68" y="0.0" width="234" height="16.666666666666668"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir"
+                                            pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="CameraStatusLabel" firstAttribute="top" secondItem="CameraStatusContainer"
+                                        secondAttribute="top" id="CameraStatusLabelTop1"/>
+                                    <constraint firstItem="CameraStatusLabel" firstAttribute="leading" secondItem="CameraConnectedStatus"
+                                        secondAttribute="trailing" constant="10" id="CameraStatusLabelLeading"/>
+                                    <constraint firstItem="CameraConnectedStatus" firstAttribute="top" secondItem="CameraStatusContainer"
+                                        secondAttribute="top" id="CameraConnectedStatusTop"/>
+                                    <constraint firstItem="CameraStatusLabel" firstAttribute="top" secondItem="CameraStatusContainer"
+                                        secondAttribute="top" id="CameraStatusLabelTop2"/>
+                                    <constraint firstItem="CameraStatusLabel" firstAttribute="centerX" secondItem="CameraStatusContainer"
+                                        secondAttribute="centerX" id="CameraStatusLabelCenterX"/>
+                                    <constraint firstAttribute="height" constant="20" id="CameraStatusContainerHeight"/>
+                                </constraints>
+                            </view>
                             <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill"
                                 translatesAutoresizingMaskIntoConstraints="NO" id="vkP-Ut-LSE">
                                 <rect key="frame" x="20.0" y="60.0" width="350" height="600"/>
@@ -411,7 +451,7 @@
                                                 contentHorizontalAlignment="center" contentVerticalAlignment="center"
                                                 buttonType="system" lineBreakMode="middleTruncation"
                                                 translatesAutoresizingMaskIntoConstraints="NO" id="ZPW-J8-NJa">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="65"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="65"/>
                                                 <color key="backgroundColor" red="0.70588235290000001"
                                                     green="0.2470588235" blue="0.2470588235" alpha="0.94799107140000005"
                                                     colorSpace="custom" customColorSpace="sRGB"/>
@@ -425,6 +465,31 @@
                                                         eventType="touchUpInside" id="0jo-vk-x1n"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill"
+                                                contentHorizontalAlignment="center" contentVerticalAlignment="center"
+                                                buttonType="system" lineBreakMode="middleTruncation"
+                                                translatesAutoresizingMaskIntoConstraints="NO" id="ResetPoseBtn">
+                                                <rect key="frame" x="180.0" y="0.0" width="170" height="65"/>
+                                                <color key="backgroundColor" red="0.15686274510000001"
+                                                    green="0.3411764706" blue="0.81568627449999997"
+                                                    alpha="0.94737723214285718" colorSpace="custom"
+                                                    customColorSpace="displayP3"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom"
+                                                    customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"
+                                                    title="Reset Pose">
+                                                    <fontDescription key="titleFontDescription" name="Avenir-Medium"
+                                                        family="Avenir" pointSize="16"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1"
+                                                        colorSpace="custom"
+                                                        customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="resetPoseClicked:" destination="tOP-6Y-Mle"
+                                                        eventType="touchUpInside" id="ResetPoseAction"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -436,6 +501,12 @@
                         <viewLayoutGuide key="safeArea" id="05C-0d-7oU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="CameraStatusContainer" firstAttribute="leading" secondItem="05C-0d-7oU"
+                                secondAttribute="leading" constant="20" id="CameraStatusLeading"/>
+                            <constraint firstItem="CameraStatusContainer" firstAttribute="top" secondItem="05C-0d-7oU"
+                                secondAttribute="top" constant="20" id="CameraStatusTop"/>
+                            <constraint firstItem="05C-0d-7oU" firstAttribute="trailing" secondItem="CameraStatusContainer"
+                                secondAttribute="trailing" constant="20" id="CameraStatusTrailing"/>
                             <constraint firstItem="eud-ry-DMN" firstAttribute="leading" secondItem="05C-0d-7oU"
                                 secondAttribute="leading" constant="20" id="4Xk-El-dWY"/>
                             <constraint firstItem="vkP-Ut-LSE" firstAttribute="leading" secondItem="05C-0d-7oU"
@@ -445,8 +516,8 @@
                             <constraint firstItem="vkP-Ut-LSE" firstAttribute="height" constant="600" id="cL4-8o-jtF"/>
                             <constraint firstItem="05C-0d-7oU" firstAttribute="trailing" secondItem="vkP-Ut-LSE"
                                 secondAttribute="trailing" constant="20" id="f1j-S3-AfQ"/>
-                            <constraint firstItem="vkP-Ut-LSE" firstAttribute="top" secondItem="05C-0d-7oU"
-                                secondAttribute="top" constant="60" id="vSZ-zd-g9W"/>
+                            <constraint firstItem="vkP-Ut-LSE" firstAttribute="top" secondItem="CameraStatusContainer"
+                                secondAttribute="bottom" constant="20" id="vSZ-zd-g9W"/>
                             <constraint firstItem="05C-0d-7oU" firstAttribute="trailing" secondItem="eud-ry-DMN"
                                 secondAttribute="trailing" constant="20" id="z5Z-9T-mqP"/>
                         </constraints>
@@ -454,8 +525,11 @@
                     <navigationItem key="navigationItem" id="Xwq-Gc-Oxc"/>
                     <connections>
                         <outlet property="buttonLeave" destination="ZPW-J8-NJa" id="tkY-qk-6bL"/>
+                        <outlet property="buttonResetPose" destination="ResetPoseBtn" id="ResetPoseOutlet"/>
+                        <outlet property="connectedStatus" destination="CameraConnectedStatus" id="CameraConnectedStatusOutlet"/>
                         <outlet property="overlayView" destination="wBK-Uo-bLw" id="daa-d9-WS1"/>
                         <outlet property="previewView" destination="vkP-Ut-LSE" id="omU-NO-tdJ"/>
+                        <outlet property="statusLabel" destination="CameraStatusLabel" id="CameraStatusLabelOutlet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yj9-tt-OGi" userLabel="First Responder"
