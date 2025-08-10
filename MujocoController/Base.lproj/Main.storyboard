@@ -379,13 +379,13 @@
                         <subviews>
                             <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill"
                                 translatesAutoresizingMaskIntoConstraints="NO" id="vkP-Ut-LSE">
-                                <rect key="frame" x="40.0" y="100.0" width="310" height="400"/>
+                                <rect key="frame" x="20.0" y="60.0" width="350" height="600"/>
                                 <subviews>
                                     <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill"
                                         translatesAutoresizingMaskIntoConstraints="NO" id="wBK-Uo-bLw"
                                         customClass="OverlayView" customModule="MujocoController"
                                         customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="310" height="400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="600"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -439,14 +439,14 @@
                             <constraint firstItem="eud-ry-DMN" firstAttribute="leading" secondItem="05C-0d-7oU"
                                 secondAttribute="leading" constant="20" id="4Xk-El-dWY"/>
                             <constraint firstItem="vkP-Ut-LSE" firstAttribute="leading" secondItem="05C-0d-7oU"
-                                secondAttribute="leading" constant="40" id="J0w-Dt-njf"/>
+                                secondAttribute="leading" constant="20" id="J0w-Dt-njf"/>
                             <constraint firstItem="05C-0d-7oU" firstAttribute="bottom" secondItem="eud-ry-DMN"
                                 secondAttribute="bottom" constant="20" id="N4C-bL-uKC"/>
-                            <constraint firstItem="vkP-Ut-LSE" firstAttribute="height" constant="400" id="cL4-8o-jtF"/>
+                            <constraint firstItem="vkP-Ut-LSE" firstAttribute="height" constant="600" id="cL4-8o-jtF"/>
                             <constraint firstItem="05C-0d-7oU" firstAttribute="trailing" secondItem="vkP-Ut-LSE"
-                                secondAttribute="trailing" constant="40" id="f1j-S3-AfQ"/>
+                                secondAttribute="trailing" constant="20" id="f1j-S3-AfQ"/>
                             <constraint firstItem="vkP-Ut-LSE" firstAttribute="top" secondItem="05C-0d-7oU"
-                                secondAttribute="top" constant="100" id="vSZ-zd-g9W"/>
+                                secondAttribute="top" constant="60" id="vSZ-zd-g9W"/>
                             <constraint firstItem="05C-0d-7oU" firstAttribute="trailing" secondItem="eud-ry-DMN"
                                 secondAttribute="trailing" constant="20" id="z5Z-9T-mqP"/>
                         </constraints>
