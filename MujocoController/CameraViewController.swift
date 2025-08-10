@@ -65,6 +65,8 @@ class CameraViewController: UIViewController,
         arscnView.automaticallyUpdatesLighting = false
         arscnView.rendersCameraGrain = false
         arscnView.rendersMotionBlur = false
+        // Ensure the camera view fills the entire preview area
+        arscnView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         previewView.insertSubview(arscnView, at: 0)
         
         print("🎥 ARKit camera session started")
@@ -197,17 +199,17 @@ class CameraViewController: UIViewController,
         )
 
         DispatchQueue.main.async {
-            // Draw overlay of landmarks (ARKit typically uses back camera, no mirroring needed)
-            let W = self.overlayView.bounds.width
-            let H = self.overlayView.bounds.height
+            // Use the actual overlay view dimensions directly
+            let overlayW = self.overlayView.bounds.width
+            let overlayH = self.overlayView.bounds.height
 
             let viewPts: [CGPoint] = lm.map { lm in
                 let xNorm = CGFloat(lm.x)
                 let yNorm = CGFloat(lm.y)
 
-                // Fix horizontal flipping by mirroring x-coordinate
-                let px = (1.0 - yNorm) * W  // Mirror horizontally
-                let py = xNorm * H
+                // Simple direct mapping to overlay bounds with horizontal mirroring
+                let px = (1.0 - yNorm) * overlayW  // Mirror horizontally
+                let py = xNorm * overlayH
 
                 return CGPoint(x: px, y: py)
             }
