@@ -329,21 +329,9 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlipCameraButton">
-                                        <rect key="frame" x="0.0" y="75" width="350" height="55"/>
-                                        <color key="backgroundColor" red="0.30588235294117649" green="0.30588235294117649" blue="0.30588235294117649" alpha="0.94737723214285718" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="arrow.triangle.2.circlepath.camera" catalog="system">
-                                            <fontDescription key="titleFontDescription" name="Avenir-Medium" family="Avenir" pointSize="19"/>
-                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="flipCameraPressed:" destination="tOP-6Y-Mle" eventType="touchUpInside" id="FlipCameraAction"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="TR3-Ur-9f5"/>
+                                    <constraint firstAttribute="height" constant="55" id="TR3-Ur-9f5"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -368,7 +356,6 @@
                         <outlet property="connectedIndicator" destination="ConnectedIndicator" id="ConnectedIndicatorOutlet"/>
                         <outlet property="connectedLabel" destination="ConnectedLabel" id="ConnectedLabelOutlet"/>
                         <outlet property="connectedStatusView" destination="ConnectedStatusView" id="ConnectedStatusOutlet"/>
-                        <outlet property="flipCameraButton" destination="FlipCameraButton" id="FlipCameraButtonOutlet"/>
                         <outlet property="overlayView" destination="wBK-Uo-bLw" id="daa-d9-WS1"/>
                         <outlet property="previewView" destination="vkP-Ut-LSE" id="omU-NO-tdJ"/>
                         <outlet property="resetButton" destination="ResetPoseButton" id="ResetButtonOutlet"/>

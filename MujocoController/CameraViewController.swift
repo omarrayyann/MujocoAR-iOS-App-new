@@ -19,13 +19,11 @@ class CameraViewController: UIViewController,
     @IBOutlet weak var connectedStatusView: UIView!
     @IBOutlet weak var connectedIndicator: UIView!
     @IBOutlet weak var connectedLabel: UILabel!
-    @IBOutlet weak var flipCameraButton: UIButton!
     
     // Use ARSession for both pose tracking and camera feed
     private var arSession = ARSession()
     private var handLandmarker: HandLandmarker?
     var webManager = WebSocketManager()
-    private var isUsingBackCamera = true  // Track current camera
 
     // ARKit components for device pose tracking
     private var currentDeviceRotation: simd_float3x3 = matrix_identity_float3x3
@@ -49,7 +47,6 @@ class CameraViewController: UIViewController,
         // Apply corner radius styling to match ViewController
         buttonLeave.layer.cornerRadius = buttonLeave.frame.height/2
         resetButton.layer.cornerRadius = resetButton.frame.height/2
-        flipCameraButton.layer.cornerRadius = flipCameraButton.frame.height/2
         connectedStatusView.layer.cornerRadius = connectedStatusView.frame.height/2
         connectedIndicator.layer.cornerRadius = connectedIndicator.frame.height/2
         previewView.layer.cornerRadius = previewView.frame.height/40
@@ -288,35 +285,6 @@ class CameraViewController: UIViewController,
     @IBAction func resetPosePressed(_ sender: Any) {
         calibrateARKit()
         print("🔄 Pose reset - new calibration applied")
-    }
-    
-    @IBAction func flipCameraPressed(_ sender: Any) {
-        isUsingBackCamera.toggle()
-        
-        // Reconfigure ARSession with new camera
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal, .vertical]
-        
-        // ARWorldTracking only supports back camera, so switch to ARFaceTracking for front
-        if isUsingBackCamera {
-            arSession.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-            print("📷 Switched to back camera")
-        } else {
-            // Use ARFaceTrackingConfiguration for front camera
-            if ARFaceTrackingConfiguration.isSupported {
-                let faceConfig = ARFaceTrackingConfiguration()
-                arSession.run(faceConfig, options: [.resetTracking, .removeExistingAnchors])
-                print("📷 Switched to front camera")
-            } else {
-                // If face tracking not supported, fall back to back camera
-                isUsingBackCamera = true
-                arSession.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-                print("⚠️ Front camera not supported, staying on back camera")
-            }
-        }
-        
-        // Recalibrate after camera switch
-        isFirstFrame = true
     }
     
     // MARK: - WebSocketManagerDelegate
